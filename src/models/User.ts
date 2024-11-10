@@ -4,16 +4,16 @@ export interface IUser extends Document {
   name: string;
   email: string;
   password: string;
-  user_type: 'guest' | 'host';
-  phone_number: number;
+  role: 'admin' | 'user';
+  image: string
 }
 
 const UserSchema = new Schema<IUser>({
   name: { type: String, required: true },
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
-  user_type: { type: String, enum: ['guest', 'host'], required: true },
-  phone_number: { type: Number, required: true },
+  role: { type: String, enum: ['admin', 'user'], required: true },
+  image: { type: String, required: true },
 }, {
   timestamps: true,
 });

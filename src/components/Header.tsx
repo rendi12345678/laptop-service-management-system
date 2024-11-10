@@ -3,6 +3,8 @@ import Link from "next/link";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { Sheet, SheetTrigger, SheetContent, SheetTitle } from "@/components/ui/sheet";
 import BaseContainer from "@/components/BaseContainer";
+import SignInLink from "./SignInLink";
+import AvatarMenu from "./AvatarMenu";
 // import { Button } from "@/components/ui/button";
 
 export default function Header() {
@@ -29,12 +31,14 @@ export default function Header() {
         </Link>
       </div>
       <Sheet>
-        <SheetTrigger asChild>
+        <AvatarMenu />
+        <SignInLink />
+        <SheetTrigger asChild className="md:hidden">
           <div className="cursor-pointer">
-            <RxHamburgerMenu className="md:hidden text-4xl" />
-            <Link href="/admin/dashboard" className="text-lg font-medium hover:underline underline-offset-4" prefetch={false}>
-              Dashboard
-            </Link>
+            <RxHamburgerMenu className="text-4xl" />
+            {/* <Link href="/admin/dashboard" className="text-lg font-medium hover:underline underline-offset-4" prefetch={false}> */}
+            {/*   Dashboard */}
+            {/* </Link> */}
             <span className="sr-only">Toggle navigation menu</span>
           </div>
         </SheetTrigger>
