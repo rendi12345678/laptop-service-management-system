@@ -21,7 +21,7 @@ const renderMenuItem = (
   Icon: React.ComponentType<React.SVGProps<SVGSVGElement>>,
   label: string
 ) => (
-  <DropdownMenuItem onClick={onClick}>
+  <DropdownMenuItem onClick={onClick} className="cursor-pointer">
     <Icon className="mr-2 h-4 w-4" />
     <span>{label}</span>
   </DropdownMenuItem>
@@ -56,7 +56,7 @@ export default function AvatarMenu(): ReactElement {
         </DropdownMenuTrigger>
 
         <DropdownMenuContent className="w-56">
-          <DropdownMenuLabel>My Account</DropdownMenuLabel>
+          <DropdownMenuLabel>Menu</DropdownMenuLabel>
           {/* <DropdownMenuSeparator /> */}
           <DropdownMenuGroup>
             {user?.role !== "admin" ? renderMenuItem(
