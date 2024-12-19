@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import { Toaster } from "@/components/ui/toaster"
 import "./globals.css";
 import Providers from "./providers"
 import { getSession } from "@/auth"
@@ -16,8 +17,8 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Homestay App",
-  description: "Homestay app for personalized homestay owner",
+  title: "Servy",
+  description: "Laptop Service Management",
 };
 
 export default async function RootLayout({
@@ -34,6 +35,7 @@ export default async function RootLayout({
       >
         <Providers session={session}>
           <div className="w-svw">{children}</div>
+          <Toaster />
         </Providers>
       </body>
     </html>

@@ -1,6 +1,8 @@
-import { NextAuthOptions, getServerSession } from 'next-auth';
-import GoogleProvider from 'next-auth/providers/google';
-import { getUserByEmail, createUser } from './lib/dbUtils';
+import { NextAuthOptions, getServerSession } from "next-auth";
+import GoogleProvider from "next-auth/providers/google";
+import { saveUser } from "./lib/dbUtils";
+import Role from "@/models/Role";
+import { connectToDatabase } from "@/lib/dbConnect";
 
 export const authOptions: NextAuthOptions = {
   secret: process.env.NEXTAUTH_SECRET,
@@ -12,43 +14,48 @@ export const authOptions: NextAuthOptions = {
   ],
   callbacks: {
     async signIn({ user }) {
-      // Check if the user exists in the database
-      const existingUser = await getUserByEmail(user.email as string);
+      try {
+        await connectToDatabase();
 
-      if (existingUser) {
-        // If user exists, use the role from the database
-        user.role = existingUser.role;
-      } else {
-        // If new user, assign role (default or based on email)
-        const role = user.email === process.env.ADMIN_EMAIL ? 'admin' : 'user';
+        const existingRole = await Role.findOne({ email: user.email });
+        const role = existingRole?.role || "user";
 
-        // Create a new user
-        await createUser({
+        const savedUser = await saveUser({
           name: user.name as string,
           email: user.email as string,
           image: user.image as string,
           role,
         });
 
-        // Assign role to user
         user.role = role;
+        user.id = savedUser._id.toString();
+        return true;
+      } catch (error) {
+        console.error("Error during sign-in:", error);
+        return false;
       }
-
-      return true; // Sign-in success
-    },
-
-    async session({ session, token }) {
-      // Attach role to the session object
-      session.user.role = token.role;
-      return session;
     },
 
     async jwt({ token, user }) {
-      // If a user object exists, add role to JWT
       if (user) {
         token.role = user.role;
+        token.image = user.image;
+        token.name = user.name;
+        token.email = user.email;
+        token.id = user.id;
       }
       return token;
+    },
+
+    async session({ session, token }) {
+      if (token) {
+        session.user.role = token.role as string;
+        session.user.email = token.email as string;
+        session.user.image = token.image as string;
+        session.user.name = token.name as string;
+        session.user.id = token.id as string;
+      }
+      return session;
     },
   },
 };

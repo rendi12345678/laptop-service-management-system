@@ -1,28 +1,51 @@
-"use client"
-import { useEffect } from "react"
-import HomestayForm from "@/components/home/HomestayForm"
-import Image from 'next/image';
-import { useSession } from "next-auth/react"
+"use client";
+import { signIn } from "next-auth/react";
+import React, { useEffect, useState } from "react";
+import { Button } from "@/components/ui/button";
+import { useRouter } from "next/navigation";
+import { useSession } from "next-auth/react";
 
-export default function Hero() {
-  const { data: session, status } = useSession()
+const Hero: React.FC = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
+  const { data: session } = useSession();
+  const router = useRouter();
 
   useEffect(() => {
-    console.log(status)
-    console.log(session);
-  }, [status, session])
+    if (session?.user) return setIsLoggedIn(true);
+    setIsLoggedIn(false);
+  }, [session?.user]);
+
+  const handleGoToDashboard = () => {
+    router.push("/admin/dashboard");
+  };
+
+  const handleLogin = () => {
+    signIn("google");
+  };
 
   return (
-    <section className="mx-4 bg-secondary">
-      <div className="w-full rounded-lg h-64 relative">
-        <Image
-          src="/images/rice-terrace-1.jpeg"
-          alt="Logo"
-          layout="fill"
-          className="object-fill rounded-lg"
-        />
+    <section
+      className="relative bg-background h-screen flex items-center justify-center text-foreground bg-cover bg-center"
+    >
+      <div className="relative flex flex-col items-center text-center px-6 z-10">
+        <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold">
+          Laptop Service Management System
+        </h1>
+        <p className="mb-8"> Streamline your laptop service workflow. Assign tasks, manage repairs and upgrades, and optimize team efficiency – all in one platform!</p>
+        <div className="flex flex-col sm:flex-row justify-center gap-4">
+          {isLoggedIn ? (
+            <Button size="lg" className="w-fit" onClick={handleGoToDashboard}>
+              Go to Dashboard
+            </Button>
+          ) : (
+            <Button size="lg" className="w-fit" onClick={handleLogin}>
+              Login with Google
+            </Button>
+          )}
+        </div>
       </div>
-      <HomestayForm />
     </section>
-  )
-}
+  );
+};
+
+export default Hero;

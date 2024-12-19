@@ -10,12 +10,10 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuLabel,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
   DropdownMenuGroup
 } from "@/components/ui/dropdown-menu";
 
-// Function to render a menu item with an icon and label
 const renderMenuItem = (
   onClick: () => void,
   Icon: React.ComponentType<React.SVGProps<SVGSVGElement>>,
@@ -32,12 +30,10 @@ export default function AvatarMenu(): ReactElement {
   const router = useRouter()
   const user = session?.user;
 
-  // Fallback to the first letter of the user's name (capitalized) if image is not available
   const avatarFallback = user?.name ? user.name.charAt(0).toUpperCase() : "U";
 
-  // Handle sign-out action
   const handleAuthClick = () => {
-    signOut(); // Only signing out, no sign-in logic here
+    signOut();
   };
 
   return (
