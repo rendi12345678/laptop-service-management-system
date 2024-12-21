@@ -100,7 +100,7 @@ const InputFormField = ({
         <FormItem>
           <Label htmlFor={id}>{label}</Label>
           <FormControl>
-            {field.name === "description" ? renderTextarea(field) : renderInput(field)}
+            {field.name === "description1" ? renderTextarea(field) : renderInput(field)}
           </FormControl>
           <FormMessage className="empty:hidden mt-0">
             {errors[name]?.message}

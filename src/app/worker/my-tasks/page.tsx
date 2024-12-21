@@ -2,7 +2,6 @@ import { SearchParams } from "@/types";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/auth";
 import SelectShowing from "@/components/dashboard/SelectShowing";
-import mongoose from "mongoose";
 import TaskTable from "@/components/dashboard/TaskTable";
 import DashboardContainer from "@/components/dashboard/DashboardContainer";
 import DashboardHeader from "@/components/dashboard/DashboardHeader";

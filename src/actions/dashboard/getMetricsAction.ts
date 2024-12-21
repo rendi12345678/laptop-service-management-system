@@ -1,20 +1,26 @@
 import { connectToDatabase } from "@/lib/dbConnect";
-import User from "@/models/User";
 import Task from "@/models/Task";
 
 const getMetricsAction = async () => {
   try {
     await connectToDatabase();
 
-    const totalUsers = await User.countDocuments();
-    const totalInProgressTasks = await Task.countDocuments({
-      status: { $in: ['Pending', 'In Progress'] },
+    const totalPendingTasks = await Task.countDocuments({
+      status: 'Pending',
     });
-    const totalActiveTasks = totalInProgressTasks;
+
+    const totalActiveTasks = await Task.countDocuments({
+      status: { $in: ['Pending', 'In Progress', "Completed"] },
+    });
+
+    const totalInProgressTasks = await Task.countDocuments({
+      status: { $in: ['In Progress'] },
+    });
+
     const totalCompletedTasks = await Task.countDocuments({ status: 'Completed' });
 
     const metrics = {
-      totalUsers,
+      totalPendingTasks,
       totalInProgressTasks,
       totalActiveTasks,
       totalCompletedTasks,

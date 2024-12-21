@@ -41,6 +41,7 @@ export default function TaskTable({
         <TableRow>
           <TableHead className="min-w-[280px]">Task Description</TableHead>
           <TableHead className="min-w-[150px]">Customer Name</TableHead>
+          <TableHead className="min-w-[150px]">Customer Phone</TableHead>
           <TableHead className="min-w-[100px]">Brand</TableHead>
           <TableHead className="min-w-[150px]">Model</TableHead>
           <TableHead className="min-w-[120px]">Status</TableHead>
@@ -56,6 +57,7 @@ export default function TaskTable({
           ({
             description,
             customerName,
+            customerPhone,
             status,
             laptopBrand,
             laptopModel,
@@ -66,6 +68,7 @@ export default function TaskTable({
             <TableRow key={_id?.toString() as string}>
               <TableCell>{description}</TableCell>
               <TableCell>{customerName}</TableCell>
+              <TableCell>{customerPhone}</TableCell>
               <TableCell>{laptopBrand}</TableCell>
               <TableCell>{laptopModel}</TableCell>
               <TableCell

@@ -1,5 +1,5 @@
 "use client";
-import { signIn } from "next-auth/react";
+import { signIn, signOut } from "next-auth/react";
 import React, { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
@@ -16,11 +16,20 @@ const Hero: React.FC = () => {
   }, [session?.user]);
 
   const handleGoToDashboard = () => {
-    router.push("/admin/dashboard");
+    const role = session?.user?.role;
+    if (role === "worker") {
+      router.push("/worker/my-tasks");
+    } else {
+      router.push("/admin/dashboard");
+    }
   };
 
   const handleLogin = () => {
     signIn("google");
+  };
+
+  const handleLogout = () => {
+    signOut();
   };
 
   return (
@@ -31,12 +40,25 @@ const Hero: React.FC = () => {
         <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold">
           Laptop Service Management System
         </h1>
-        <p className="mb-8"> Streamline your laptop service workflow. Assign tasks, manage repairs and upgrades, and optimize team efficiency – all in one platform!</p>
+        <p className="mb-8">
+          Streamline your laptop service workflow. Assign tasks, manage repairs
+          and upgrades, and optimize team efficiency – all in one platform!
+        </p>
         <div className="flex flex-col sm:flex-row justify-center gap-4">
           {isLoggedIn ? (
-            <Button size="lg" className="w-fit" onClick={handleGoToDashboard}>
-              Go to Dashboard
-            </Button>
+            <>
+              <Button size="lg" className="w-fit" onClick={handleGoToDashboard}>
+                Go to Dashboard
+              </Button>
+              <Button
+                size="lg"
+                variant="outline"
+                className="w-fit"
+                onClick={handleLogout}
+              >
+                Logout
+              </Button>
+            </>
           ) : (
             <Button size="lg" className="w-fit" onClick={handleLogin}>
               Login with Google
