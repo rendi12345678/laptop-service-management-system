@@ -25,24 +25,25 @@ export default function TaskReport({
 }: TaskReportProps): ReactElement {
   return (
     <Card className="bg-background shadow">
-      <CardHeader className="flex-row justify-between items-start">
-        <span>
+      <CardHeader className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+        <span className="flex flex-col sm:flex-row gap-2 sm:gap-6">
           <CardTitle className="my-0">Task Report</CardTitle>
-          <CardDescription className="mt-1.5">
+          <CardDescription className="mt-1.5 sm:mt-0">
             Summary of current tasks and their status
           </CardDescription>
         </span>
         <SelectShowing />
       </CardHeader>
       <CardContent>
-        <TaskTable
-          page={page}
-          per_page={per_page}
-          items={items}
-          totalItemsLength={totalItemsLength}
-        />
+        <div className="overflow-x-auto">
+          <TaskTable
+            page={page}
+            per_page={per_page}
+            items={items}
+            totalItemsLength={totalItemsLength}
+          />
+        </div>
       </CardContent>
     </Card>
   );
 }
-

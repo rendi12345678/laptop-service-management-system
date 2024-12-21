@@ -1,12 +1,13 @@
-"use client";
+import useAppContext from "@/hooks/useAppContext";
 import { useSession } from "next-auth/react";
 import { signOut } from "next-auth/react";
 import React, { useEffect, useState } from "react";
 import { BiSolidLogOut } from "react-icons/bi";
 import { RxHamburgerMenu } from "react-icons/rx";
+import { AiOutlineClose } from "react-icons/ai";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { RiDashboardFill, } from 'react-icons/ri';
+import { RiDashboardFill } from 'react-icons/ri';
 import { FaTasks, FaUsers } from 'react-icons/fa';
 
 const adminLinks = [
@@ -47,7 +48,7 @@ const getLinksByRole = (role: string) => {
 };
 
 const Sidebar = () => {
-  const [isExpanded, setIsExpanded] = useState(false);
+  const { isExpanded, toggleSidebar } = useAppContext();
   const [isVisible, setIsVisible] = useState(false);
   const { data: session } = useSession();
   const [links, setLinks] = useState(workerLinks);
@@ -56,14 +57,10 @@ const Sidebar = () => {
     if (session?.user) {
       setLinks(getLinksByRole(session?.user?.role));
     }
-  }, [session?.user])
+  }, [session?.user]);
 
   const handleLogout = () => {
     signOut();
-  }
-
-  const toggleSidebar = () => {
-    setIsExpanded(!isExpanded);
   };
 
   useEffect(() => {
@@ -79,27 +76,28 @@ const Sidebar = () => {
   }, [isExpanded]);
 
   const pathname = usePathname();
+
   return (
     <aside
-      className={`h-screen py-12 shadow bg-background w-full text-white px-6 sticky min-h-svh top-0 transition-all duration-300 bottom-0 ${!isExpanded ? "max-w-32" : "max-w-[300px]"
-        }`}
+      className={`h-screen py-12 shadow bg-background w-full text-white px-6 fixed z-10 top-0 transition-all duration-300 ${isExpanded ? "w-[300px] block" : "w-0 hidden"}`}
     >
       <div
-        className={`mb-12 text-foreground items-center justify-center flex gap-6 ${!isExpanded && "pt-[12px]"
-          }`}
+        className={`mb-12 text-foreground flex items-center justify-center gap-6 ${!isExpanded && "pt-0"}`}
       >
-        <h1
+        <h2
           className={`mb-0 p-0 transition-all duration-500 delay-200 ${isExpanded && isVisible
             ? "block opacity-100 w-auto"
             : "w-0 opacity-0"
             }`}
           style={{ display: isExpanded ? "block" : "none" }}
-        >Servy</h1>
+        >
+          Menu
+        </h2>
         <span
-          className="h-7 text-4xl w-9 cursor-pointer"
+          className="h-5 text-4xl w-6 cursor-pointer flex items-center justify-center"
           onClick={toggleSidebar}
         >
-          <RxHamburgerMenu />
+          {isExpanded ? <AiOutlineClose /> : <RxHamburgerMenu />} {/* Toggle between Hamburger and X icon */}
         </span>
       </div>
       <ul className="space-y-4">
@@ -150,4 +148,3 @@ const Sidebar = () => {
 };
 
 export default Sidebar;
-

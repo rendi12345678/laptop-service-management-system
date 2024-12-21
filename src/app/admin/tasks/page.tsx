@@ -21,9 +21,9 @@ const TasksPage = async ({
 
   return (
     <DashboardContainer className="w-full min-h-screen py-12 px-10 overflow-y-auto">
-      <DashboardHeader className="flex justify-between">
+      <DashboardHeader className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6 sm:gap-12">
         <DashboardTitle>Tasks</DashboardTitle>
-        <div className="flex gap-6">
+        <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 w-full sm:w-auto">
           <SelectShowing />
           <AddTaskDialog />
         </div>

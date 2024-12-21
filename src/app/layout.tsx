@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { Toaster } from "@/components/ui/toaster"
+import AppProvider from "@/providers/AppProvider";
 import "./globals.css";
 import Providers from "./providers"
 import { getSession } from "@/auth"
@@ -30,14 +31,16 @@ export default async function RootLayout({
 
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <Providers session={session}>
-          <div className="w-svw">{children}</div>
-          <Toaster />
-        </Providers>
-      </body>
+      <AppProvider>
+        <body
+          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        >
+          <Providers session={session}>
+            <div className="w-svw">{children}</div>
+            <Toaster />
+          </Providers>
+        </body>
+      </AppProvider>
     </html>
   );
 }

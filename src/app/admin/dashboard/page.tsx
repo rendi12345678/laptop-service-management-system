@@ -56,10 +56,10 @@ const DashboardPage = async ({ searchParams }: SearchParams) => {
         <DashboardGreater />
         <AdminProfileHeader />
       </DashboardHeader>
-      <DashboardContent className="grid grid-cols-7 gap-6">
+      <DashboardContent className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-7 gap-6">
         <DashboardSummary
           data={data} />
-        <section className="flex flex-col gap-6 col-span-5">
+        <section className="flex flex-col gap-6 col-span-1 sm:col-span-2 lg:col-span-5">
           <TaskReport
             page={page}
             per_page={perPage}
@@ -67,7 +67,7 @@ const DashboardPage = async ({ searchParams }: SearchParams) => {
             totalItemsLength={totalItemsLength}
           />
         </section>
-        <section className="flex flex-col col-span-2 gap-6">
+        <section className="flex flex-col col-span-1 sm:col-span-2 lg:col-span-2 gap-6">
           <ListCard
             title="Worker Report"
             description="A detailed list of all workers at Servy with key information."

@@ -39,7 +39,7 @@ export default function TaskTable({
     <Table>
       <TableHeader>
         <TableRow>
-          <TableHead className="min-w-[280px]">Task Description</TableHead>
+          <TableHead className="min-w-[150px]">Task Description</TableHead>
           <TableHead className="min-w-[150px]">Customer Name</TableHead>
           <TableHead className="min-w-[150px]">Customer Phone</TableHead>
           <TableHead className="min-w-[100px]">Brand</TableHead>
