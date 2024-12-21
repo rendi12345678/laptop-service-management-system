@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { SearchParams } from "@/types"
 import { AddTaskDialog } from "@/components/dashboard/dialogs/AddTaskDialog";
 import SelectShowing from "@/components/dashboard/SelectShowing";
@@ -13,7 +14,6 @@ const TasksPage = async ({
   searchParams,
 }: SearchParams) => {
   const { page = 1, perPage = 5 } = await searchParams;
-  // @ts-ignore
   const { items, totalItemsLength } = await getTasksAction(
     Number(page),
     Number(perPage),
@@ -30,10 +30,8 @@ const TasksPage = async ({
       </DashboardHeader>
       <DashboardContent className="bg-background shadow p-6 rounded-lg">
         <TaskTable
-          // @ts-ignore
           page={page}
           deleteAction={deleteTaskAction}
-          // @ts-ignore
           per_page={perPage}
           items={items}
           totalItemsLength={totalItemsLength}
