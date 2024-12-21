@@ -79,7 +79,7 @@ const Sidebar = () => {
 
   return (
     <aside
-      className={`h-screen py-12 shadow bg-background w-full text-white px-6 fixed z-10 top-0 transition-all duration-300 ${isExpanded ? "w-[300px] block" : "w-0 hidden"}`}
+      className={`h-screen py-12 shadow bg-background w-full text-white px-6 fixed z-10 top-0 transition-all duration-300 max-w-[300px] ${isExpanded ? "w-[300px]" : "w-0 hidden"}`}
     >
       <div
         className={`mb-12 text-foreground flex items-center justify-center gap-6 ${!isExpanded && "pt-0"}`}
@@ -148,3 +148,4 @@ const Sidebar = () => {
 };
 
 export default Sidebar;
+
