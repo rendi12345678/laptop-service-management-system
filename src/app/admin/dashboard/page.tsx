@@ -26,7 +26,6 @@ const DashboardPage = async ({ searchParams }: SearchParams) => {
   const { items, totalItemsLength } = tasksResponse;
   const { items: users } = workersResponse;
 
-  // Define the data for the dashboard summary
   const data = [
     {
       label: "Active Tasks",
