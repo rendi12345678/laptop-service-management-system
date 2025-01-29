@@ -37,13 +37,13 @@ const nextConfig: NextConfig = {
     return [
       {
         source: "/admin/:path*",
-        destination: "/login", // Redirect to login or another page
-        permanent: false, // temporary redirect
+        destination: "/",
+        permanent: false,
       },
       {
         source: "/worker/:path*",
-        destination: "/login", // Redirect to login or another page
-        permanent: false, // temporary redirect
+        destination: "/",
+        permanent: false,
       },
     ];
   },
