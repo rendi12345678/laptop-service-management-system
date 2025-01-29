@@ -29,9 +29,5 @@ export default function middleware(req: NextRequest): NextResponse {
 }
 
 export const config = {
-  matcher: [
-    "/((?!api|_next/static|_next/image|favicon.ico).*)",
-    "/admin/:path*",
-    "/worker/:path*",
-  ],
+  matcher: ["/admin/:path*", "/worker/:path*"],
 };
