@@ -21,7 +21,7 @@ The **Laptop Service Management System** is a comprehensive solution designed to
 
 Built with **Next.js, TypeScript, Tailwind CSS, and MongoDB**, the system provides a fast, scalable, and user-friendly solution for laptop repair management.
 
-## How to Use This Café System
+## How to Use This Laptop Service Management System
 
 ### Prerequisites
 Ensure you have Node.js and npm installed on your machine. You can download them from [here](https://nodejs.org/).
@@ -31,8 +31,8 @@ Ensure you have Node.js and npm installed on your machine. You can download them
 1. **Clone the Repository:**
 
 ``` 
-git clone https://github.com/rendi12345678/java-cafe.git
-cd java-cafe
+git clone https://github.com/rendi12345678/laptop-service-management-system.git
+cd laptop-service-management-system
 ```
 
 2. **Install Dependencies:**
