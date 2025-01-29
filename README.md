@@ -42,7 +42,16 @@ npm install
 # or
 yarn install
 ```
-
 3. **Run the Development Server:**
 
 Start the server locally to test the system.
+
+```
+npm run dev
+# or
+yarn dev
+```
+
+4. **Access the System:**
+
+Open http://localhost:3000 in your browser to access the application.
