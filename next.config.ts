@@ -37,12 +37,12 @@ const nextConfig: NextConfig = {
     return [
       {
         source: "/admin/:path*",
-        destination: "/",
+        destination: "/admin/dashboard",
         permanent: false,
       },
       {
         source: "/worker/:path*",
-        destination: "/",
+        destination: "/worker/my-tasks",
         permanent: false,
       },
     ];
