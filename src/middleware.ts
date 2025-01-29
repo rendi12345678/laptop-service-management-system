@@ -28,6 +28,6 @@ export default function middleware(req: NextRequest): NextResponse {
   return NextResponse.next();
 }
 
-export const config = {
-  matcher: ["/admin/:path*", "/worker/:path*"],
-};
+// export const config = {
+//   matcher: ["/admin/:path*", "/worker/:path*"],
+// };
