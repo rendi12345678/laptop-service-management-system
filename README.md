@@ -1,36 +1,22 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Laptop Service Management System
 
-## Getting Started
+The **Laptop Service Management System** is a comprehensive solution designed to help service centers manage repair requests, track repair progress, optimize technician assignments, and maintain customer satisfaction. The system offers seamless integration for managing customer orders and invoicing.
 
-First, run the development server:
+## Key Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+1. **Repair Request Management**  
+   Accept repair requests from customers, categorize issues, and generate repair tickets for efficient tracking.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. **Technician Assignment**  
+   Automatically assign technicians based on their expertise and availability, ensuring balanced workloads and timely repair completion.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. **Repair Progress Monitoring**  
+   Track the progress of ongoing repairs, update statuses, and notify customers when repairs are complete.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+4. **Billing & Invoicing**  
+   Generate invoices for completed repairs, including labor and parts costs, and manage payments efficiently.
 
-## Learn More
+5. **Customer Notifications**  
+   Integrate with **WhatsApp** to notify customers when their repair is completed and send the final invoice.
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Built with **Next.js, TypeScript, Tailwind CSS, and MongoDB**, the system provides a fast, scalable, and user-friendly solution for laptop repair management.
