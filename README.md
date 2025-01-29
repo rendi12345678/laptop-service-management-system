@@ -20,3 +20,29 @@ The **Laptop Service Management System** is a comprehensive solution designed to
    Integrate with **WhatsApp** to notify customers when their repair is completed and send the final invoice.
 
 Built with **Next.js, TypeScript, Tailwind CSS, and MongoDB**, the system provides a fast, scalable, and user-friendly solution for laptop repair management.
+
+## How to Use This Café System
+
+### Prerequisites
+Ensure you have Node.js and npm installed on your machine. You can download them from [here](https://nodejs.org/).
+
+### Getting Started
+
+1. **Clone the Repository:**
+
+``` 
+git clone https://github.com/rendi12345678/java-cafe.git
+cd java-cafe
+```
+
+2. **Install Dependencies:**
+
+```
+npm install
+# or
+yarn install
+```
+
+3. **Run the Development Server:**
+
+Start the server locally to test the system.
